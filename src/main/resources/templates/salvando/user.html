@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastre-se</title>
+</head>
+<body>
+    <form action="/saveUser" method="post" th:object ="${user}">
+        <input  type="hidden" th:field="*{id}">
+        nome: <input type="text" th:field="*{name}">
+        senha: <input type="password" name="password">
+        e-mail: <input type="email" th:field="*{email}">
+        <button type="submit">enviar</button>
+
+        <select th:field="*{state}">
+            <option th:each = "state: ${enum_state}"
+            th:value ="${state}"
+            th:text = "${state.Name}">
+        </select>
+    </form>
+
+    <div class="container">
+        <table>
+            <tr>
+                <td>nome</td>
+                <td>e-mail</td>
+                <td>estado</td>
+                <td>ações</td>
+            </tr>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.state}"></td>
+                <td><a id= "alter" th:href="|alterUser?id=${user.id}|">Alterar</a>
+                    <a id= "delete" th:href="|deleteUser?id=${user.id}|">Excluir</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-br"
+xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  	<title>List user</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Todos os Usuários</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-dark">
+						<table class="table table-bordered table-dark table-hover">
+						  <thead>
+						    <tr>
+						      
+						      <th>Nome </th>
+						      <th>E-mail</th>
+						      <th>Estado</th>
+							  <th>Ações</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr th:each="user: ${users}">
+								<td th:text="${user.name}"></td>
+								<td th:text="${user.login}"></td>
+								<td th:text="${user.state}"></td>
+								<td> <a id= "alter" th:href="|alterUser?id=${user.id}|">
+
+										<button class="btn btn-outline-primary">Alterar</button>
+
+									</a>
+									<a id= "delete" th:href="|deleteUser?id=${user.id}|">
+
+										<button  class="btn btn-outline-danger">Excluir</button>
+
+									</a>
+								</td>
+							</tr>
+
+						  </tbody>
+						</table>
+						<a href="/createUser"><button class="btn btn-primary">Criar Novo</button></a>
+						<a href="/logOut"> <button class="btn btn-outline-info">Sair</button> </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+	</body>
+</html>
+
